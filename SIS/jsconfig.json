@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "baseUrl": "http://sistema-admision-back.test/api/",
+        "paths": {
+            "@/components/*": ["src/components/*"]
+        }
+    },
+    "exclude": ["node_modules", "dist"]
+}
