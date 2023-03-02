@@ -438,7 +438,7 @@
                 residencia:[],
                 certificado:null,
                 voucher1:null,
-                pro:null,
+                pro:null, 
 
                 dni:'',
                 persona:{},
