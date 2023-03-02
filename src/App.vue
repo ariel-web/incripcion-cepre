@@ -10,7 +10,7 @@
 
     import '@/assets/sass/app.scss';
 
-    export default {
+    export default { 
         metaInfo: {
             title: 'Admin',
             titleTemplate: '%s | Unap - Inscripciones'
