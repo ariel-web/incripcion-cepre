@@ -7,6 +7,7 @@
             &nbsp;
             <!-- Datos Personales
             {{ Apoderados }} -->
+            <!-- {{ persona.programa }} -->
         </template>
 
         <div class="col-lg-12 layout-spacing" style="margin-top: 0px;">
@@ -15,8 +16,7 @@
                     <div class="row">
                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                             <h4>Datos Generales</h4>
-                            {{ persona }}
-                            {{  }}
+                            <!-- {{ persona }} -->
                         </div>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                         <div class="col-lg-12 col-md-12 col-12 mx-auto" style="margin-top: -10px;">
                             <label>Examen</label>
                             <b-select :value="1">
-                                <b-select-option :value="1">EXAMEN EXTRAORDINARIO FEBRERO 2023</b-select-option>
+                                <b-select-option :value="1">EXAMEN CEPREUNA 2023-I</b-select-option>
                             </b-select>
                         </div>
 
@@ -48,7 +48,7 @@
 
                         <div class="col-lg-12 col-md-12 col-12 mx-auto" style="margin-top: -10px;">                        
                             <label>Programa de estudios {{ pro }}</label>    
-                            <b-select :value="programas[0].value" v-model="pro">                                
+                            <b-select :value="programas[0].value" v-model="persona.programa">                                
                                 <b-select-option  v-for="programa in programas" :key="programa.value" :value="programa.value"> <div>{{programa.value }} - </div> <br> <div>{{ programa.name }}</div>  </b-select-option>
                             </b-select>
                         </div>
@@ -94,7 +94,7 @@
                     <div class="row">
                         <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                             <h4>Datos Personales </h4>
-                            <!-- {{ persona }} -->
+                             <!-- {{ persona }}  -->
                         </div>
                     </div>
                 </div>
@@ -410,8 +410,6 @@
 
 
 <script>
-
-
     import flatPickr from 'vue-flatpickr-component';
     import 'flatpickr/dist/flatpickr.css';
     import '@/assets/sass/forms/custom-flatpickr.css';
@@ -442,7 +440,7 @@
                 voucher1:null,
                 pro:null,
 
-                dni:'75551841',
+                dni:'',
                 persona:{},
                 programas:[
                     {value:1, name:"MEDICINA VETERINARIA Y ZOOTECNIA"},
@@ -513,6 +511,7 @@
                     this.Apoderados = res.data.apoderados;
                     this.residencia = res.data.residencia;
                     this.certificado = res.data.certificado;
+
                 })
                 .catch(()=>{
                     console.log("Error");
@@ -522,7 +521,7 @@
             async validar(){
                 await axios.post('/validar', {
                     id_postulante: this.persona.id,
-                    id_programa: this.pro
+                    id_programa: this.persona.programa
                 })
                 .then(function (response) {
                     console.log(response);
